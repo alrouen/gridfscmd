@@ -7,7 +7,7 @@ def _long_display(files):
     for f in files:
         print "{0}\t{1}\t{2}".format(
             size(f.length),
-            f.upload_date.strftime('%y-%m-%d %H:%M.%S %z'),
+            f.upload_date.strftime('%Y-%m-%d %H:%M.%S %z'),
             f.filename
         )
 
