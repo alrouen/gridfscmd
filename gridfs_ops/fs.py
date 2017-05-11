@@ -10,7 +10,7 @@ host_pattern = re.compile('^([a-zA-Z0-9_\-\.]+){1}(:\d+)?(,([a-zA-Z0-9_\-\.]+){1
 
 class Fs(object):
 
-    def __init__(self, host, db, user, password, bucket_name, ssl):
+    def __init__(self, host, db_name, user, password, bucket_name, ssl):
 
         host_ok = Fs.__check_hostname(host)
         if host_ok is None:
@@ -19,10 +19,11 @@ class Fs(object):
             options = None
             if ssl:
                 options = { 'ssl' : 'true', 'ssl_cert_reqs' : "CERT_NONE"}
-            self.mongo_uri = Fs.build_uri(host, db, user, password, options)
+            self.mongo_uri = Fs.build_uri(host, db_name, user, password, options)
             self.bucket_name = bucket_name
             client = MongoClient(self.mongo_uri)
-            db = client[db]
+            db = client[db_name]
+            #print "Connecting to mongodb://{0}/{1}/{2} ...".format(host, db_name, bucket_name)
             self.fs = gridfs.GridFSBucket(db, bucket_name=self.bucket_name)
 
     @staticmethod

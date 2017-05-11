@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from gridfsOps import ls, get, put, rm
+from gridfs_ops import ls, get, put, rm
 
 # Main parser
 parser = argparse.ArgumentParser('gridsfscmd', add_help=False)

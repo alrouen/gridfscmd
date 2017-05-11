@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='gridfscmd',
     version='0.1.0',
-    packages=['gridfsOps'],
+    packages=['gridfs_ops'],
     scripts = ['gridfscmd'],
     url='https://github.com/alrouen/gridfscmd',
     license='',
