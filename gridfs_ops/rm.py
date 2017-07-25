@@ -36,6 +36,3 @@ def cmd(args):
                 spinner.stop()
     else:
         print "no matching file found."
-
-
-#print map(lambda f: str(f._id), files)
