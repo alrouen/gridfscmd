@@ -20,7 +20,7 @@ def _confirm_removal(message='Do you confirm ? (y/n) '):
 
 # RM
 def cmd(args):
-    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl)
+    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl, args.auth_db)
     confirmation = args.confirmation
     files = _fs.find(args.filename)
 

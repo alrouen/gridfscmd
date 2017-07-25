@@ -10,15 +10,19 @@ host_pattern = re.compile('^([a-zA-Z0-9_\-\.]+){1}(:\d+)?(,([a-zA-Z0-9_\-\.]+){1
 
 class Fs(object):
 
-    def __init__(self, host, db_name, user, password, bucket_name, ssl):
+    def __init__(self, host, db_name, user, password, bucket_name, ssl, auth_source):
 
         host_ok = Fs.__check_hostname(host)
         if host_ok is None:
             raise ValueError('hostname syntax is invalid. Must be host:port or host1:port1,host2:port2 for replica sets')
         else:
-            options = None
+            options = {}
             if ssl:
-                options = { 'ssl' : 'true', 'ssl_cert_reqs' : "CERT_NONE"}
+                options.update({'ssl': 'true', 'ssl_cert_reqs': "CERT_NONE"})
+
+            if auth_source is not None:
+                options['authSource'] = auth_source
+
             self.mongo_uri = Fs.build_uri(host, db_name, user, password, options)
             self.bucket_name = bucket_name
             client = MongoClient(self.mongo_uri)

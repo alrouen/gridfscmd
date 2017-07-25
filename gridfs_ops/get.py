@@ -6,7 +6,7 @@ from spinner import Spinner
 
 # GET
 def cmd(args):
-    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl)
+    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl, args.auth_db)
     gridfs_files = _fs.find(args.filename)
     nb_of_files = len(gridfs_files)
     if nb_of_files > 0:

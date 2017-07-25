@@ -25,7 +25,7 @@ def _build_local_file_list(source):
 
 # PUT
 def cmd(args):
-    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl)
+    _fs = Fs(args.host, args.db, args.user, args.password, args.bucket, args.ssl, args.auth_db)
 
     if exists(args.source):
 
