@@ -18,7 +18,7 @@ def _build_local_file_list(source):
         root = dirname(source)
         for (current_folder, sub_folders, sub_files) in walk(root):
             if len(sub_files) > 0:
-                remote_path = current_folder.replace(root,'').replace('\\', '')  # We remove any '\' (Windows env)
+                remote_path = current_folder.replace(root,'').replace('\\', '/')  # We remove any '\' (Windows env)
                 f.extend(list(map(lambda sub_file: remote_path+'/'+sub_file, sub_files)))
         return root, f
 
