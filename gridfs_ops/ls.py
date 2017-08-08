@@ -5,10 +5,11 @@ from hurry.filesize import size
 def _long_display(files):
     print 'total ' + str(len(files))
     for f in files:
-        print "{0}\t{1}\t{2}".format(
+        print "{0}\t{1}\t{2}\t{3}".format(
             size(f.length),
             f.upload_date.strftime('%Y-%m-%d %H:%M.%S %z'),
-            f.filename
+            f.filename,
+            f.md5
         )
 
 
